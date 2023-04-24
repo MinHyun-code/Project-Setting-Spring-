@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	
+<!-- 	스캔한 패키지 내부의 클래스 중 Controller 어노테이션을 가지고 있는 클래스들을 Controller로 로딩하도록 한다 -->
+  	<context:annotation-config />
+<!--   스캔할 bean들이 모여있는 패키지를 지정 -->
+  	<context:component-scan base-package="sample.prac.pracMain"/>
+  	
+<!-- 	properties 설정, @value 사용하기 위해 -->
+  	<context:property-placeholder
+    	location="classpath:/config/system-${spring.profiles.active}.properties"/>	
+  	
+<!-- 	Controller의 메서드에서 반환하는 문자열 앞 뒤에 붙힐 경로 정보 셋팅 -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	  <beans:property name="prefix" value="/WEB-INF/views/" />
+	  <beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+</beans:beans>
