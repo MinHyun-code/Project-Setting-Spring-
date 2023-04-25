@@ -20,7 +20,7 @@ public class MailAuth extends Authenticator{
     public MailAuth() {
     	System.out.println(mailId);
         String mail_id = "mhan@bsgglobal.com";
-        String mail_pw = "Alsekfvod2**";
+        String mail_pw = "";
         pa = new PasswordAuthentication(mail_id, mail_pw);
     }
 
